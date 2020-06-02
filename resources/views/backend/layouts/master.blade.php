@@ -14,13 +14,13 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" rel="stylesheet">
     </head>
     <body>
-        @include('partials.header')
+        @include('backend.partials.header')
 
           <div class="test-body pt-5">
            <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    @include('admin.partials.left-sidebar')
+                    @include('backend.partials.left-sidebar')
                 </div>
                 <div class="col-md-9">
                    @yield('content')
@@ -30,4 +30,4 @@
           </div>
 
 
-       @include('partials.footer')
+       @include('backend.partials.footer')

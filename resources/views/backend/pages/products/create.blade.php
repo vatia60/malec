@@ -1,8 +1,8 @@
-@extends('admin.layouts.master')
+@extends('backend.layouts.master')
 @section('content')
 <div class="card">
   <div class="card-body">
-      @include('admin.partials.errormessage')
+      @include('backend.partials.errormessage')
     <form action="{{ route('admin.products.store') }}" method="post" enctype='multipart/form-data'>
         @csrf
         <div class="form-group">

@@ -1,7 +1,7 @@
-@extends('admin.layouts.master')
+@extends('backend.layouts.master')
 @section('content')
 <div class="product-table">
-    @include('admin.partials.errormessage')
+    @include('backend.partials.errormessage')
     <table class="table">
         <thead>
           <tr>

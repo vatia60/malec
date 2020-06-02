@@ -12,15 +12,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        @include('partials.header')
+        @include('frontend.partials.header')
 
-        @include('partials.nav')
+        @include('frontend.partials.nav')
 
           <div class="test-body pt-5">
            <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    @include('partials.sidebar')
+                    @include('frontend.partials.sidebar')
                 </div>
                 <div class="col-md-9">
                    @yield('content')
@@ -30,4 +30,4 @@
           </div>
 
 
-       @include('partials.footer')
+       @include('frontend.partials.footer')
