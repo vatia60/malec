@@ -2,6 +2,7 @@
 @section('content')
 <div class="card">
   <div class="card-body">
+      @include('admin.partials.errormessage')
     <form action="{{ route('admin.products.store') }}" method="post" enctype='multipart/form-data'>
         @csrf
         <div class="form-group">
@@ -22,7 +23,12 @@
         </div>
         <div class="form-group">
             <label>Image</label>
-            <input type="file" name="product_image" class="form-control">
+            <div class="row">
+                <div class="col-md-4"><input type="file" name="product_image[]" class="form-control"></div>
+                <div class="col-md-4"><input type="file" name="product_image[]" class="form-control"></div>
+                <div class="col-md-4"><input type="file" name="product_image[]" class="form-control"></div>
+            </div>
+
         </div>
 
         <button type="submit" class="btn btn-primary">Add Product</button>
