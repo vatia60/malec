@@ -10,9 +10,8 @@
                   <a href="#"><i class="fa fa-gift fa-lg"></i> Category <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="category">
-                    <li><a href="">Manage Category</a></li>
-                    <li><a href="">Create Category</a></li>
-                    <li><a href="">Update Category</a></li>
+                    <li><a href="{{ route('admin.categories.index') }}">Manage Category</a></li>
+                    <li><a href="{{ route('admin.categories.create') }}">Create Category</a></li>
                 </ul>
 
                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">

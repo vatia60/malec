@@ -1,35 +1,39 @@
 @extends('frontend.layouts.master')
 @section('content')
 <div class="row">
+
+    @foreach ($products as $product)
+
     <div class="col-md-4">
-<div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+     <div class="card">
+
+    @php $i = 1;  @endphp
+
+    @foreach ($product->images as $image)
+
+    @if( $i > 0 )
+
+    <a href="{{ route('products.show', $product->slug) }}"><img class="card-img-top" src="{{ asset('images/products/'. $image->image) }}" alt="Card image cap"></a>
+
+    @endif
+
+    @php $i--;  @endphp
+
+    @endforeach
+
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{ route('products.show', $product->slug) }}">{{ $product->title }}</a></h5>
+        <p class="card-text">{{ $product->description }}</p>
+        <p class="card-text">{{ $product->price }}</p>
+        <a href="#" class="btn btn-primary">Add To Cart</a>
+     </div>
+     </div>
+    </div>
+
+   @endforeach
+
 </div>
-    </div>
-    <div class="col-md-4">
-    <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
-    </div>
-    <div class="col-md-4">
-       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-    </div>
+<div class="pt-5">
+    {{ $products->links() }}
 </div>
 @endsection

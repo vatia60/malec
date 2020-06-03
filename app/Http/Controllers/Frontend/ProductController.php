@@ -15,4 +15,11 @@ class ProductController extends Controller
 
         return view('frontend.pages.products.index')->with('products', $products);
     }
+
+    public function show ($slug)
+    {
+        $products = Product::where('slug', $slug)->first();
+
+        return view('frontend.pages.products.show')->with('products', $products);
+    }
 }
