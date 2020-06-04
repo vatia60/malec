@@ -29,7 +29,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
        ]);
 
         $category = new Category;
@@ -66,7 +65,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
        ]);
 
         $category = Category::find($id);
@@ -103,6 +101,11 @@ class CategoryController extends Controller
     {
 
         $category = Category::find($id);
+        if(File::exists('images/categories/'.$category->image)){
+            File::delete('images/categories/'.$category->image);
+         }
+
+        $category->delete();
 
         if(!is_null($category)){
 
@@ -117,22 +120,21 @@ class CategoryController extends Controller
                         File::delete('images/categories/'.$sub->image);
                     }
 
-                    $sub_categories->delete();
+                    $sub->delete();
 
                     }
 
-            if(File::exists('images/categories/'.$category->image)){
-                File::delete('images/categories/'.$category->image);
-             }
 
-            $category->delete();
         }
 
+
+
+
+
+    }
         session()->flash('message', 'Category Delete Successfully');
         session()->flash('type', 'success');
 
         return redirect()->back();
-
-    }
     }
 }

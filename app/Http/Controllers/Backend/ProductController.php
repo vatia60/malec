@@ -32,6 +32,8 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
        ]);
 
         $product = new Product;
@@ -41,9 +43,8 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
-
-        $product->category_id = 1;
-        $product->parent_id = 1;
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->admin_id = 1;
         $product->save();
 
@@ -75,7 +76,8 @@ class ProductController extends Controller
         }
 
 
-
+        session()->flash('message', 'Product Created Successfully');
+        session()->flash('type', 'success');
         return redirect()->route('admin.products.create');
 
     }
@@ -93,6 +95,8 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
        ]);
 
         $product = Product::find($id);
@@ -101,11 +105,14 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->save();
 
 
 
-
+        session()->flash('message', 'Product Updated Successfully');
+        session()->flash('type', 'success');
         return redirect()->route('admin.products.index');
 
     }

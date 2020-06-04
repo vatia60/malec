@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('content')
-<h2>Search Result</h2><br><br>
+<h2>Search Result - <span class="badge badge-primary">{{ $search }}</span></h2><br><br>
 <div class="row">
     @foreach ($product_search as $product)
         <div class="col-md-4">

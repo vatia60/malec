@@ -7,30 +7,30 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Parent Category</th>
+            <th scope="col">Description</th>
             <th scope="col">Image</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
             @php $i = 1; @endphp
-        @foreach ($categories as $category)
+        @foreach ($brands as $brand)
           <tr>
             <th scope="row">{{ $i++ }}</th>
-            <td>{{ $category->name }}</td>
+            <td>{{ $brand->name }}</td>
             <td>
-                @if($category->parent_id == NULL)
-                Primary category
+                @if($brand->parent_id == NULL)
+                Primary brand
                 @else
-               {{ $category->parent->name }}
+               {{ $brand->parent->name }}
                @endif
             </td>
-            <td><img src="{{ asset('images/categories/'. $category->image) }}" width="100"></td>
+            <td><img src="{{ asset('images/brands/'. $brand->image) }}" width="100"></td>
             <td>
-                <a href="{{ route('admin.categories.edit', $category->id) }}">Edit</a> |
-                <a href="#deletemodal{{ $category->id }}" data-toggle="modal">Delete</a>
+                <a href="{{ route('admin.brands.edit', $brand->id) }}">Edit</a> |
+                <a href="#deletemodal{{ $brand->id }}" data-toggle="modal">Delete</a>
 
-<div class="modal fade" id="deletemodal{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletemodal{{ $brand->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -43,7 +43,7 @@
           Are you want to delete this product
         </div>
         <div class="modal-footer">
-        <form action="{{ route('admin.categories.delete', $category->id) }}" method="post">
+        <form action="{{ route('admin.brands.delete', $brand->id) }}" method="post">
             @csrf
          <button type="submit" class="btn btn-primary">Delete</button>
         </form>

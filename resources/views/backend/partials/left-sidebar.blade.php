@@ -27,9 +27,8 @@
                     <a href="#"><i class="fa fa-gift fa-lg"></i> Brand <span class="arrow"></span></a>
                   </li>
                   <ul class="sub-menu collapse" id="brand">
-                      <li><a href="#">Manage Brand</a></li>
-                      <li><a href="#">Create Brand</a></li>
-                      <li><a href="#">Update Brand</a></li>
+                      <li><a href="{{ route('admin.brands.index') }}">Manage Brand</a></li>
+                      <li><a href="{{ route('admin.brands.create') }}">Create Brand</a></li>
                   </ul>
 
                   <li  data-toggle="collapse" data-target="#division" class="collapsed active">
