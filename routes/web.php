@@ -20,6 +20,8 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::group(['prefix' => 'products'], function () {
     Route::get('/', 'ProductController@index')->name('products.index');
     Route::get('/show/{slug}', 'ProductController@show')->name('products.show');
+
+    Route::get('/category/{id}', 'CategoryController@index')->name('products.categories.index');
   });
 
 });

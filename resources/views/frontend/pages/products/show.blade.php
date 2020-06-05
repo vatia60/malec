@@ -37,6 +37,7 @@
              <div class="card">
 
               <div class="card-body">
+                 <p>Category: <mark>{{ $products->category->name }}</mark> <br> Brand: <mark>{{ $products->brand->name }}</mark></p>
                 <h5 class="card-title">{{ $products->title }}</h5>
                 <p class="card-text">{{ $products->description }}</p>
                 <p class="card-text">{{ $products->price }}</p>

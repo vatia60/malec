@@ -1,3 +1,7 @@
+.activeluku {
+    border: 1px solid green !important;
+    padding: 8px 14px  !important;
+}
 /* SIDEBAR */
 
 .nav-side-menu {

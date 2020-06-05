@@ -22,7 +22,37 @@
             <label>Quantity</label>
             <input type="number" name="quantity" class="form-control" value="{{ $products_edit->quantity }}">
         </div>
+        <div class="form-group">
+            <label>Category</label>
+             <select name="category_id" class="form-control">
+               <option value="">Select Category</option>
 
+               @foreach (App\Models\Category::orderBy('name', 'asc')->where('parent_id', NULL)->get() as $item)
+
+               <option value="{{ $item->id }}" {{ $item->id == $products_edit->category->id ? 'selected' : '' }}>{{ $item->name }}</option>
+
+               @foreach (App\Models\Category::orderBy('name', 'asc')->where('parent_id', $item->id)->get() as $childitem)
+
+               <option value="{{ $childitem->id }}"  {{ $childitem->id == $products_edit->category->id ? 'selected' : '' }}>----->{{ $childitem->name }}</option>
+
+               @endforeach
+
+               @endforeach
+             </select>
+           </div>
+           <div class="form-group">
+               <label>Brand</label>
+             <select name="brand_id" class="form-control">
+
+               <option value="">Select Brand</option>
+
+               @foreach (App\Models\Brand::orderBy('name', 'asc')->get() as $brandname)
+
+               <option value="{{ $brandname->id }}" {{ $brandname->id == $products_edit->brand->id ? 'selected' : '' }}>{{ $brandname->name }}</option>
+
+               @endforeach
+             </select>
+           </div>
         <button type="submit" class="btn btn-primary">Update Product</button>
       </form>
  </div>
