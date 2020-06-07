@@ -20,8 +20,6 @@ class BrandController extends Controller
 
     public function create()
     {
-
-
         return view('backend.pages.brands.create');
     }
 

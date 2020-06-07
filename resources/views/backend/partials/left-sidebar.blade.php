@@ -35,18 +35,16 @@
                     <a href="#"><i class="fa fa-gift fa-lg"></i> Division <span class="arrow"></span></a>
                   </li>
                   <ul class="sub-menu collapse" id="division">
-                      <li><a href="#">Manage Division</a></li>
-                      <li><a href="#">Create Division</a></li>
-                      <li><a href="#">Update Division</a></li>
+                      <li><a href="{{ route('admin.divisions.index') }}">Manage Division</a></li>
+                      <li><a href="{{ route('admin.divisions.create') }}">Create Division</a></li>
                   </ul>
 
                   <li  data-toggle="collapse" data-target="#district" class="collapsed active">
-                    <a href="#"><i class="fa fa-gift fa-lg"></i> Division <span class="arrow"></span></a>
+                    <a href="#"><i class="fa fa-gift fa-lg"></i> District <span class="arrow"></span></a>
                   </li>
                   <ul class="sub-menu collapse" id="district">
-                      <li><a href="#">Manage Division</a></li>
-                      <li><a href="#">Create Division</a></li>
-                      <li><a href="#">Update Division</a></li>
+                      <li><a href="{{ route('admin.districts.index') }}">Manage District</a></li>
+                      <li><a href="{{ route('admin.districts.create') }}">Create District</a></li>
                   </ul>
 
             </ul>

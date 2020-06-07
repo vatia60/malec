@@ -64,6 +64,28 @@ Route::group(['prefix' => 'brands'], function () {
 
 });
 
+Route::group(['prefix' => 'divisions'], function () {
+
+    Route::get('/', 'DivisionController@index')->name('admin.divisions.index');
+    Route::get('/create', 'DivisionController@create')->name('admin.divisions.create');
+    Route::post('/create', 'DivisionController@store')->name('admin.divisions.store');
+    Route::get('/edit/{id}', 'DivisionController@edit')->name('admin.divisions.edit');
+    Route::post('/edit/{id}', 'DivisionController@update')->name('admin.divisions.update');
+    Route::post('/delete/{id}', 'DivisionController@delete')->name('admin.divisions.delete');
+
+});
+
+Route::group(['prefix' => 'districts'], function () {
+
+    Route::get('/', 'DistrictController@index')->name('admin.districts.index');
+    Route::get('/create', 'DistrictController@create')->name('admin.districts.create');
+    Route::post('/create', 'DistrictController@store')->name('admin.districts.store');
+    Route::get('/edit/{id}', 'DistrictController@edit')->name('admin.districts.edit');
+    Route::post('/edit/{id}', 'DistrictController@update')->name('admin.districts.update');
+    Route::post('/delete/{id}', 'DistrictController@delete')->name('admin.districts.delete');
+
+});
+
 });
 
 Auth::routes();

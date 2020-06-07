@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\District;
+use App\Models\Division;
+
 class RegisterController extends Controller
 {
     /*
@@ -41,6 +44,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $districts = District::orderBy('id', 'desc')->get();
+        $divisions = Division::orderBy('priority_id', 'asc')->get();
+        return view('auth.register', compact('districts', 'divisions'));
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -65,9 +74,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => $data['first_name'],
+            'phone_number' => $data['phone_number'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'shiping_address' => $data['shiping_address'],
+            'division_id' => $data['division_id'],
+            'district_id' => $data['district_id'],
+            'ip_address' => request()->ip(),
         ]);
     }
 }
