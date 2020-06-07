@@ -2,8 +2,10 @@
 
 @section('content')
 <div class="container">
+
     <div class="row">
         <div class="col-md-8">
+            @include('backend.partials.errormessage')
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -108,7 +110,7 @@
                             <div class="col-md-6">
 
 
-                               <select name="division" id="division" class="form-control @error('division') is-invalid @enderror" required autocomplete="street_address" autofocus>
+                               <select name="division_id" id="division" class="form-control @error('division') is-invalid @enderror" required autocomplete="division" autofocus>
                                <option value="">Please select a division</option>
                                @foreach ($divisions as $division)
                                <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -129,7 +131,7 @@
                             <div class="col-md-6">
 
 
-                               <select name="district" id="district" class="form-control @error('district') is-invalid @enderror" required autocomplete="street_address" autofocus>
+                               <select name="district_id" id="district" class="form-control @error('district') is-invalid @enderror" required autocomplete="street_address" autofocus>
                                <option value="">Please select a district</option>
                                @foreach ($districts as $district)
                                <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -150,6 +152,20 @@
                                 <input id="street_address" type="text" class="form-control @error('street_address') is-invalid @enderror" name="street_address" value="{{ old('street_address') }}" required autocomplete="street_address" autofocus>
 
                                 @error('street_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="shiping_address" class="col-md-4 col-form-label text-md-right">{{ __('Street Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="shiping_address" type="text" class="form-control @error('shiping_address') is-invalid @enderror" name="shiping_address" value="{{ old('shiping_address') }}" required autocomplete="shiping_address" autofocus>
+
+                                @error('shiping_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
