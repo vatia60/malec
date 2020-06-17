@@ -8,9 +8,11 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 use App\Models\District;
 use App\Models\Division;
+use App\Notifications\VerifyRegistration;
 
 class RegisterController extends Controller
 {
@@ -73,7 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'username' => $data['first_name'],
@@ -85,6 +87,12 @@ class RegisterController extends Controller
             'district_id' => $data['district_id'],
             'street_address' => $data['street_address'],
             'ip_address' => request()->ip(),
+            'status' => 0,
+            'remember_token' => Str::random(40),
         ]);
+
+       
+        session()->flash('success', 'Confirm Email');
+        return redirect()->back();
     }
 }
